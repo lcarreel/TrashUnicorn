@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class			Unicorn : MonoBehaviour
 {
-	Vector3				m_InputBuffer = Vector3.zero;
+	private Vector3		m_InputBuffer = Vector3.zero;
+	private float		m_LastTP = 0;
+	public float		m_TimeBetweenTP = 3;
+
 
 	void				Start ()
 	{
@@ -13,7 +16,8 @@ public class			Unicorn : MonoBehaviour
 
 	void				Update ()
 	{
-
+		if (Time.time -  m_LastTP > m_TimeBetweenTP)
+			SetRandomPosition();
 	}
 
 	public void			SetRandomPosition()
@@ -23,6 +27,7 @@ public class			Unicorn : MonoBehaviour
 		pos.y = Random.Range(-Screen.height / 2f, 0f);
 		transform.localPosition = pos;
 		SetScaleByPosition();
+		m_LastTP = Time.time;
 	}
 
 	private void		SetScaleByPosition()
