@@ -10,6 +10,7 @@
 
 		public void OnMouseUpAsButton()
 		{
+			Debug.Log("FeatureSelectionDetector OnMouseUpAsButton : "  );
 			_marker.Show(_feature);
 		}
 
